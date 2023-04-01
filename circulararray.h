@@ -8,7 +8,7 @@ private:
     T *array;
     int capacity;
     int back, front;
-    
+
 public:
     CircularArray(int _capacity = 10);
     virtual ~CircularArray();
@@ -21,7 +21,7 @@ public:
     bool is_empty();
     int size();
     void clear();
-    T& operator[](int);    
+    T& operator[](int);
     void sort();
     bool is_sorted();
     void reverse();
@@ -38,4 +38,9 @@ CircularArray<T>::CircularArray(int _capacity)
     this->capacity = _capacity;
     this->array = new T[_capacity];
     this->front = this->back = -1;//empty
+}
+
+template <class T>
+CircularArray<T>::clear(){
+    this->front = this->back = -1;
 }
