@@ -41,6 +41,91 @@ CircularArray<T>::CircularArray(int _capacity)
 }
 
 template <class T>
-CircularArray<T>::clear(){
+void CircularArray<T>::clear(){
     this->front = this->back = -1;
+}
+
+template <class T>
+void CircularArray<T>::push_front(T data){
+    int pos;
+    if (this->is_full()){
+        //mandar mensaje de error por superación de capacidad
+    }
+    else if (this->is_empty()){
+        this->array[0] = data;
+        this->front = this->back = 0;
+    }
+    else {
+        if (this->back == (this->capacity-1)){
+            pos = 0;
+        }
+        else {pos = this->back + 1;}
+
+        this->array[pos] = data;
+        this->back = pos;
+    }
+}
+
+template <class T>
+void CircularArray<T>::push_back(T data){
+    int pos;
+    if (this->CircularArray.is_full()){
+        //mandar mensaje de error por superación de capacidad
+    }
+    else if(this->CircularArray.is_empty()){
+        this->array[0] = data;
+        this->front = this->back = 0;
+    }
+    else{
+        if (this->front == 0){
+                pos = this->capacity - 1;
+            }
+        else{
+            pos = front-1;
+        }
+
+        this->array[pos] = data;
+        this->front = pos;
+    }
+}
+
+template <class T>
+T& CircularArray<T>::operator[](int _pos){
+    return array[_pos];
+}
+
+template <class T>
+bool CircularArray<T>::is_empty(){
+    if (this->front == -1 && this->back ==-1){
+        return true;
+    } else { return false;}
+}
+
+template <class T>
+int CircularArray<T>::size(){
+    if (this->is_empty()){
+        return 0;
+    }
+    if (this->back >= this->front){
+        return (this->back - this->front + 1);
+    }
+    else {return (this->capacity - this->front + this->back + 1);}
+}
+
+template <class T>
+bool CircularArray<T>::is_full(){
+    if (this->size() == this->capacity) {
+        return true;
+    }
+    else {return false;}
+}
+
+template <class T>
+T CircularArray<T>::pop_front(){
+    //
+}
+
+template <class T>
+T CircularArray<T>::pop_back(){
+    //
 }
