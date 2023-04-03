@@ -130,10 +130,26 @@ bool CircularArray<T>::is_full(){
 
 template <class T>
 T CircularArray<T>::pop_front(){
-//
+    if (this->is_empty()){
+        //mensaje de error porque no hay elementos que eliminar
+    }
+    else{
+        if(this->front == this->capacity -1 ){
+            this->front = 0;
+        }
+        else{this->front = front + 1;}
+    }
 }
 
 template <class T>
 T CircularArray<T>::pop_back(){
-    //
+    if (this->is_empty()){
+        //mensaje de error porque no hay elementos para eliminar
+    }
+    else{
+        if(this->back == 0){
+            this->back = this->capacity-1;
+        }
+        else{this->back = this->back-1;}
+    }
 }
