@@ -91,7 +91,15 @@ void CircularArray<T>::push_back(T data){
 
 template <class T>
 T& CircularArray<T>::operator[](int _pos){
-    return array[_pos];
+    int _posn = this->front+_pos;
+    if (_posn > this->capacity-1){
+        _posn = _posn - this->capacity;
+    }
+
+    if (_posn > this->back){
+        //mensaje de indice superior al tamaño
+    }
+    return array[_posn];
 }
 
 template <class T>
@@ -122,7 +130,7 @@ bool CircularArray<T>::is_full(){
 
 template <class T>
 T CircularArray<T>::pop_front(){
-    //
+//
 }
 
 template <class T>
