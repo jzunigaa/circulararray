@@ -50,6 +50,7 @@ void CircularArray<T>::push_front(T data){
     int pos;
     if (this->is_full()){
         //mandar mensaje de error por superación de capacidad
+        cout<<"El arreglo esta lleno"<<endl;
     }
     else if (this->is_empty()){
         this->array[0] = data;
@@ -69,10 +70,11 @@ void CircularArray<T>::push_front(T data){
 template <class T>
 void CircularArray<T>::push_back(T data){
     int pos;
-    if (this->CircularArray.is_full()){
+    if (this->is_full()){
         //mandar mensaje de error por superación de capacidad
+        cout<<"El arreglo esta lleno"<<endl;
     }
-    else if(this->CircularArray.is_empty()){
+    else if(this->is_empty()){
         this->array[0] = data;
         this->front = this->back = 0;
     }
@@ -98,8 +100,9 @@ T& CircularArray<T>::operator[](int _pos){
 
     if (_posn > this->back){
         //mensaje de indice superior al tamaño
+        cout<<"Indice fuera de rango"<<endl;
     }
-    return array[_posn];
+    return this->array[_posn];
 }
 
 template <class T>
@@ -132,6 +135,7 @@ template <class T>
 T CircularArray<T>::pop_front(){
     if (this->is_empty()){
         //mensaje de error porque no hay elementos que eliminar
+        cout<<"No hay elementos para eliminar"<<endl;
     }
     else{
         if(this->front == this->capacity -1 ){
@@ -145,6 +149,7 @@ template <class T>
 T CircularArray<T>::pop_back(){
     if (this->is_empty()){
         //mensaje de error porque no hay elementos para eliminar
+        cout<<"No hay elementos para eliminar"<<endl;
     }
     else{
         if(this->back == 0){
@@ -152,4 +157,12 @@ T CircularArray<T>::pop_back(){
         }
         else{this->back = this->back-1;}
     }
+}
+
+template <class T>
+CircularArray<T>::~CircularArray(){
+    if(this->array != nullptr){
+        delete[] this->array;
+    }
+    cout<<"Ha terminado"<<endl;
 }
